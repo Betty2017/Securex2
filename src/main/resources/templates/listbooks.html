@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org ">
+<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,13 +23,13 @@
             <th>Cover</th>
             <th>Title</th>
             <th>Author</th>
-            <th>Actions</th>
+            <th sec:authorize="hasAuthority('admin')">Actions</th>
         </tr>
         <tr th:each="row : ${books}">
             <td></td>
             <td th:text="${row.title}"></td>
             <td th:text="${row.author}"></td>
-            <td><a href="#" th:href="@{/books/edit/{bookid} (bookid = ${row.id})}">Update</a> -
+            <td sec:authorize="hasAuthority('admin')" ><a href="#" th:href="@{/books/edit/{bookid} (bookid = ${row.id})}">Update</a> -
                 <a href="#" th:href="@{/books/delete/{bookid} (bookid = ${row.id})}">Delete</a>
             </td>
         </tr>

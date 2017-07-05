@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org ">
+<html lang="en" xmlns:th="www.thymeleaf.org "  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,16 +34,27 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/books/add">Add Book</a></li>
                     <li><a href="/books/list">Show Books</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/login">log in</a></li>
+                    <li><a href="/logout">Log out</a></li>
+                    <li>Hello,<span sec:authentication="name">Bob</span></li>
                 </ul>
             </div><!--/.nav-collapse -->
+            <!-- <div sec:authorize="isAuthenticated()">
+			  This content is only shown to authenticated users.
+			</div> -->
+			<!-- <div sec:authorize="hasRole('ROLE_ADMIN')">
+			  This content is only shown to administrators.
+			</div> -->
+			<!-- <div sec:authorize="hasRole('ROLE_USER')">
+			  This content is only shown to users.
+			</div> -->
         </div>
     </nav>
     <div class="container">
 
         <div class="starter-template">
             <h1>Securex</h1>
-            <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+            <p class="lead">Use this document as a way to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
         </div>
 
     </div><!-- /.container -->

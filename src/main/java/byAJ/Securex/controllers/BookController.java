@@ -2,7 +2,14 @@ package byAJ.Securex.controllers;
 
 import byAJ.Securex.models.Book;
 import byAJ.Securex.repositories.BookRepository;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +49,21 @@ public class BookController {
     }
     @RequestMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id")int bookid){
-        bookRepository.delete(bookid);
+    	
+    	bookRepository.delete(bookid);
         return "listbooks";
     }
+    
+    
+    
+  /*  
+    @RequestMapping(value="/logout",method= RequestMethod.GET)
+    public String logOut(HttpServletRequest request ,HttpServletResponse response){
+    Authentication aut= SecurityContextHolder.getContext().getAuthentication();
+    if(aut != null){
+    	new SecurityContextLogoutHandler().logout(request, response, aut);
+    }
+        return "redirect:/login";
+    }*/
+    
 }

@@ -29,12 +29,12 @@
             <td></td>
             <td th:text="${row.title}"></td>
             <td th:text="${row.author}"></td>
-            <td sec:authorize="hasAuthority('admin')" ><a href="#" th:href="@{/books/edit/{bookid} (bookid = ${row.id})}">Update</a> -
+            <td sec:authorize="hasAuthority('admin')" > <a href="#" th:href="@{/books/edit/{bookid} (bookid = ${row.id})}">Update</a> -
                 <a href="#" th:href="@{/books/delete/{bookid} (bookid = ${row.id})}">Delete</a>
             </td>
         </tr>
     </table>
-</div><!-- /.container -->
+</div>
 
 <th:block th:replace="base :: footlinks"></th:block>
 </body>
